@@ -1,0 +1,15 @@
+{% extends "eventos/index.html" %} {% block content %}
+<div class="container py-4">
+    <h2>Todos los Sponsors</h2>
+    <div class="row text-center">
+        {% for sponsor in sponsors %}
+        <div class="col-6 col-md-3 mb-4">
+            <a href="{{ sponsor.link }}" target="_blank">
+                <img src="{{ sponsor.logo.url }}" class="img-fluid" alt="{{ sponsor.nombre }}">
+                <p>{{ sponsor.nombre }}</p>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

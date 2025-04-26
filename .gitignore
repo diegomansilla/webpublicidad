@@ -1,0 +1,25 @@
+# Ignorar el entorno virtual
+env/
+
+# Ignorar archivos de configuración sensibles
+.env
+
+# Ignorar archivos de base de datos temporales (opcional)
+*.sqlite3
+
+# Ignorar archivos de caché de Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignorar archivos de migraciones si no querés trackearlos al principio
+# (Esto depende de tu estrategia de deploy)
+# */migrations/
+
+# Ignorar archivos de logs
+*.log
+
+# Ignorar archivos del editor (VSCode, etc.)
+.vscode/
+.idea/
+*.swp

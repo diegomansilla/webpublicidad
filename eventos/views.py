@@ -1,0 +1,18 @@
+from django.shortcuts import render
+from .models import Evento, Sponsor
+from datetime import datetime
+
+def index(request):
+    eventos = Evento.objects.prefetch_related('sponsors').order_by('-fecha')  # Últimos eventos primero
+    return render(request, 'eventos/index.html', {
+        'eventos': eventos,
+        'now': datetime.now(),
+        })
+
+def eventos_list(request):
+    eventos = Evento.objects.all().order_by('-fecha')
+    return render(request, 'eventos/eventos_list.html', {'eventos': eventos})
+
+def sponsors_list(request):
+    sponsors = Sponsor.objects.all()
+    return render(request, 'eventos/sponsors_list.html', {'sponsors': sponsors})
