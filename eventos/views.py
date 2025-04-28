@@ -19,11 +19,3 @@ def sponsors_list(request):
     sponsors = Sponsor.objects.all()
     return render(request, 'eventos/sponsors_list.html', {'sponsors': sponsors})
 
-#Temporal
-def crear_superusuario(request):
-    User = get_user_model()
-    if not User.objects.filter(username="admin").exists():
-        User.objects.create_superuser('admin', 'admin@example.com', 'adminpassword')
-        return HttpResponse("Superusuario creado!")
-    else:
-        return HttpResponse("El superusuario ya existe.")
