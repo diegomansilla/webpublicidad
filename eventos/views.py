@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from .models import Evento, Sponsor
 from datetime import datetime
+from django.contrib.auth import get_user_model
+from django.http import HttpResponse
 
 def index(request):
     eventos = Evento.objects.prefetch_related('sponsors').order_by('-fecha')  # Últimos eventos primero
@@ -16,3 +18,12 @@ def eventos_list(request):
 def sponsors_list(request):
     sponsors = Sponsor.objects.all()
     return render(request, 'eventos/sponsors_list.html', {'sponsors': sponsors})
+
+#Temporal
+def crear_superusuario(request):
+    User = get_user_model()
+    if not User.objects.filter(username="admin").exists():
+        User.objects.create_superuser('admin', 'admin@example.com', 'adminpassword')
+        return HttpResponse("Superusuario creado!")
+    else:
+        return HttpResponse("El superusuario ya existe.")
