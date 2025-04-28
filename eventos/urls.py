@@ -1,6 +1,5 @@
 from django.urls import path
 from . import views
-from eventos.views import crear_superusuario
 
 urlpatterns = [
     path('', views.index, name='index'),
